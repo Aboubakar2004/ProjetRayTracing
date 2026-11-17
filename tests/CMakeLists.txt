@@ -6,7 +6,7 @@ FetchContent_Declare(
   GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(unit_tests test_greeting.cpp)
+add_executable(unit_tests greeting/test_greeting.cpp math/test_vector.cpp)
 target_link_libraries(unit_tests PRIVATE raytracer_core Catch2::Catch2WithMain)
 
 include(Catch)

@@ -50,7 +50,7 @@ TDD loop:
 
 1. Add a failing `TEST_CASE` in `tests/` (new file: add it to `add_executable(unit_tests ...)` in `tests/CMakeLists.txt`).
 2. `cmake --build --preset debug && ctest --preset debug` → see it **fail**.
-3. Write the minimum code in `src/lib/` (add new `.cpp` files to `raytracer_core` in the root `CMakeLists.txt`) to make it pass.
+3. Write the minimum code in `src/<concept>/` (add new `.cpp` files to `raytracer_core` in the root `CMakeLists.txt`) to make it pass.
 4. Refactor, re-run, commit.
 
 ## Layout
@@ -58,6 +58,6 @@ TDD loop:
 ```
 .devcontainer/   dev container definition
 app/             executables (hello)
-src/lib/         raytracer_core library (all testable logic)
-tests/           Catch2 unit tests
+src/             raytracer_core library, grouped by concept (src/math, src/greeting)
+tests/           Catch2 unit tests, mirroring src/ (tests/math, ...)
 ```
