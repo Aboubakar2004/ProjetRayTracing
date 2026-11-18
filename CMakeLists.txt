@@ -13,7 +13,14 @@ else()
 endif()
 
 # Core library: all the logic lives here so it can be unit-tested.
-add_library(raytracer_core src/greeting/greeting.cpp src/math/vector.cpp)
+add_library(raytracer_core
+  src/greeting/greeting.cpp
+  src/math/vector.cpp
+  src/math/ray.cpp
+  src/geometry/sphere.cpp
+  src/scene/camera.cpp
+  src/image/colour.cpp
+)
 target_include_directories(raytracer_core PUBLIC src)
 
 # Executables
