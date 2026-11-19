@@ -13,6 +13,13 @@ class Colour {
   double g() const;
   double b() const;
 
+  // Lets you write: c3 = c1 * c2; (multiplies each component,
+  // e.g. a red surface lit by a white light stays red)
+  Colour operator*(const Colour& other) const;
+
+  // Lets you write: c2 = c1 * 0.5; (darkens or brightens)
+  Colour operator*(double scalar) const;
+
  private:
   double _r;
   double _g;

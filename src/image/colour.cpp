@@ -8,4 +8,12 @@ double Colour::r() const { return _r; }
 double Colour::g() const { return _g; }
 double Colour::b() const { return _b; }
 
+Colour Colour::operator*(const Colour& other) const {
+  return Colour(_r * other._r, _g * other._g, _b * other._b);
+}
+
+Colour Colour::operator*(double scalar) const {
+  return Colour(_r * scalar, _g * scalar, _b * scalar);
+}
+
 }  // namespace rt

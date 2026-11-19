@@ -33,10 +33,13 @@ add_library(raytracer_core
   src/geometry/sphere.cpp
   src/scene/camera.cpp
   src/scene/light.cpp
+  src/scene/scene.cpp
+  src/geometry/plane.cpp
   src/image/colour.cpp
   src/image/image.cpp
   src/io/png_saver.cpp
   src/material/flat_shader.cpp
+  src/material/lambert_shader.cpp
 )
 target_include_directories(raytracer_core PUBLIC src)
 target_link_libraries(raytracer_core PRIVATE lodepng)
@@ -44,6 +47,9 @@ target_link_libraries(raytracer_core PRIVATE lodepng)
 # Executables
 add_executable(hello app/main.cpp)
 target_link_libraries(hello PRIVATE raytracer_core)
+
+add_executable(render app/render.cpp)
+target_link_libraries(render PRIVATE raytracer_core)
 
 # Tests
 include(CTest)

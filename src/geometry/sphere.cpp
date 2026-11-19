@@ -31,11 +31,11 @@ std::optional<HitInfo> Sphere::intersect(const Ray& ray) const {
   double t1 = (-b - sqrtDiscriminant) / (2.0 * a);
   double t2 = (-b + sqrtDiscriminant) / (2.0 * a);
 
-  // Closest hit in front of the ray origin.
+  // Closest hit in front of the ray origin (t > 0, see Shape's contract).
   double t;
-  if (t1 >= 0) {
+  if (t1 > 0) {
     t = t1;
-  } else if (t2 >= 0) {
+  } else if (t2 > 0) {
     t = t2;  // the ray starts inside the sphere
   } else {
     return std::nullopt;  // the sphere is behind the ray
@@ -43,7 +43,7 @@ std::optional<HitInfo> Sphere::intersect(const Ray& ray) const {
 
   Vector point = ray.at(t);
   Vector normal = (point - _center).normalised();
-  return HitInfo{point, normal, _material.get()};
+  return HitInfo{t, point, normal, _material.get()};
 }
 
 }  // namespace rt

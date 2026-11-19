@@ -6,7 +6,7 @@ build:
 	cmake --build --preset debug
 
 run: build
-	./build/debug/hello
+	./build/debug/render
 
 test: build
 	ctest --preset debug
