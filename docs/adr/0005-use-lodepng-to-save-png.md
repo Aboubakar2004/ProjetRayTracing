@@ -1,7 +1,4 @@
-# 1. Use LodePNG to save images as PNG
-
-- **Status:** Proposed
-- **Date:** 2026-11-19
+# 5. Use LodePNG to save images as PNG
 
 ## Context
 
@@ -15,12 +12,12 @@ package to install, and be simple enough for the team to understand.
 
 Options considered:
 
-| Option | For | Against |
-| --- | --- | --- |
-| **LodePNG** | 2 files (`lodepng.h`, `lodepng.cpp`), no dependencies, C++ API, zlib licence | No release tags: must pin a commit |
-| libpng | The reference implementation, very widely used | C API, needs zlib, installed as a system package |
-| stb_image_write | Single header, no dependencies | C API, written for speed rather than readability |
-| Write our own | No dependency | Large amount of work and risk |
+| Option          | For                                                                          | Against                                          |
+| --------------- | ---------------------------------------------------------------------------- | ------------------------------------------------ |
+| **LodePNG**     | 2 files (`lodepng.h`, `lodepng.cpp`), no dependencies, C++ API, zlib licence | No release tags: must pin a commit               |
+| libpng          | The reference implementation, very widely used                               | C API, needs zlib, installed as a system package |
+| stb_image_write | Single header, no dependencies                                               | C API, written for speed rather than readability |
+| Write our own   | No dependency                                                                | Large amount of work and risk                    |
 
 ## Decision
 
@@ -32,9 +29,13 @@ Only `src/io/png_saver.cpp` includes LodePNG. The rest of the code saves images 
 the `ImageSaver` interface (Strategy pattern), and `PngSaver` is the only class that
 knows about LodePNG.
 
+## Status
+
+Accepted
+
 ## Consequences
 
-- No system package: the first configure downloads LodePNG, as for Catch2.
+- No system package: the first configure downloads LodePNG, as for Catch2 (ADR 3).
 - The pinned commit makes builds reproducible. Updating LodePNG means changing the
   commit hash on purpose.
 - Replacing LodePNG, or adding another format (e.g. EXR), means writing a new

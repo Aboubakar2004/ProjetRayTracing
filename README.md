@@ -5,6 +5,8 @@ A ray tracer in C++, built for a film studio as part of the Tech-Lead module.
 ## Documentation
 
 - [Discovery report](docs/discovery/discovery-report.md)
+- [Domain model](docs/domain/domain-model.md)
+- [Architecture decision records](docs/adr/)
 
 ## Getting started
 
@@ -28,8 +30,9 @@ docker run --rm -it -v "$PWD":/ws -w /ws rt-dev bash
 ```sh
 cmake --preset debug            # configure (first run downloads Catch2)
 cmake --build --preset debug    # compile
-./build/debug/hello             # prints: Hello, world!
-./build/debug/hello Alice       # prints: Hello, Alice!
+./build/debug/render            # renders the scene to image.png
+./build/debug/render out.png    # or to another file
+./build/debug/hello             # prints: Hello, world! (first demo)
 ```
 
 Shortcuts: `make build`, `make run`, `make test`, `make clean` (wrappers around the commands above).
@@ -57,7 +60,7 @@ TDD loop:
 
 ```
 .devcontainer/   dev container definition
-app/             executables (hello)
-src/             raytracer_core library, grouped by concept (src/math, src/greeting)
+app/             executables (render, hello)
+src/             raytracer_core library, grouped by concept (src/math, src/geometry, ...)
 tests/           Catch2 unit tests, mirroring src/ (tests/math, ...)
 ```

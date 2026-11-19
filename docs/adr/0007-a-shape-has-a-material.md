@@ -1,7 +1,4 @@
-# 2. A shape has a material
-
-- **Status:** Proposed
-- **Date:** 2026-11-19
+# 7. A shape has a material
 
 ## Context
 
@@ -16,7 +13,7 @@ material would then need its own class.
 
 ## Decision
 
-**Composition: a shape *has* a material, it *is not* one.**
+**Composition: a shape _has_ a material, it _is not_ one.**
 
 - `Shape` is an interface (`intersect(ray)`) implemented by `Sphere` and `Plane`.
   It only knows geometry.
@@ -28,6 +25,10 @@ material would then need its own class.
 - When a ray hits a shape, the `HitInfo` it returns carries a pointer to that material.
   The camera then calls `hit->material->shade(*hit, light)` without knowing which
   shape or material it is.
+
+## Status
+
+Accepted
 
 ## Consequences
 

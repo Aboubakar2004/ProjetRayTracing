@@ -9,7 +9,7 @@ Run inside the dev container:
 ```sh
 cmake --preset debug            # configure
 cmake --build --preset debug    # build
-./build/debug/hello             # run the demo
+./build/debug/render            # render the scene to image.png
 ctest --preset debug            # run all tests
 ```
 
