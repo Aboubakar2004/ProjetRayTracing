@@ -1,5 +1,7 @@
 #include "math/vector.hpp"
 
+#include <cmath>
+
 namespace rt {
 
 Vector::Vector(double x, double y, double z) : _x(x), _y(y), _z(z) {}
@@ -18,6 +20,15 @@ Vector Vector::operator-(const Vector& other) const {
 
 Vector Vector::operator*(double scalar) const {
   return Vector(_x * scalar, _y * scalar, _z * scalar);
+}
+
+double Vector::dot(const Vector& other) const {
+  return _x * other._x + _y * other._y + _z * other._z;
+}
+
+Vector Vector::normalised() const {
+  double length = std::sqrt(_x * _x + _y * _y + _z * _z);
+  return Vector(_x / length, _y / length, _z / length);
 }
 
 Vector operator*(double scalar, const Vector& v) {

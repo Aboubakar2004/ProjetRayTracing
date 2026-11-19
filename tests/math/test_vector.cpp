@@ -1,4 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
+#include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 #include "math/vector.hpp"
 
@@ -42,4 +43,22 @@ TEST_CASE("multiplying a number by a vector scales each component", "[vector]") 
   REQUIRE(result.x() == 2);
   REQUIRE(result.y() == -4);
   REQUIRE(result.z() == 6);
+}
+
+TEST_CASE("normalising a vector divides it by its length", "[vector]") {
+  using Catch::Matchers::WithinAbs;
+  rt::Vector v(3, 4, 0);  // length 5
+
+  rt::Vector result = v.normalised();
+
+  REQUIRE_THAT(result.x(), WithinAbs(3.0 / 5.0, 1e-9));
+  REQUIRE_THAT(result.y(), WithinAbs(4.0 / 5.0, 1e-9));
+  REQUIRE_THAT(result.z(), WithinAbs(0.0, 1e-9));
+}
+
+TEST_CASE("the dot product sums the products of the components", "[vector]") {
+  rt::Vector a(1, 2, 3);
+  rt::Vector b(4, -5, 6);
+
+  REQUIRE(a.dot(b) == 12);  // 1*4 + 2*(-5) + 3*6
 }

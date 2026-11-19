@@ -14,6 +14,9 @@ class Ray {
   const Vector& origin() const;
   const Vector& direction() const;
 
+  // The point at distance t along the ray: origin + t * direction.
+  Vector at(double t) const;
+
  private:
   Vector _origin;
   Vector _direction;

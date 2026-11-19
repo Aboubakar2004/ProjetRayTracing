@@ -32,9 +32,11 @@ add_library(raytracer_core
   src/math/ray.cpp
   src/geometry/sphere.cpp
   src/scene/camera.cpp
+  src/scene/light.cpp
   src/image/colour.cpp
   src/image/image.cpp
   src/io/png_saver.cpp
+  src/material/flat_shader.cpp
 )
 target_include_directories(raytracer_core PUBLIC src)
 target_link_libraries(raytracer_core PRIVATE lodepng)

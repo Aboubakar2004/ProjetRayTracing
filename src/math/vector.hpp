@@ -22,6 +22,13 @@ class Vector {
   // Lets you write: v2 = v1 * 2;
   Vector operator*(double scalar) const;
 
+  // Dot product: x1*x2 + y1*y2 + z1*z2.
+  double dot(const Vector& other) const;
+
+  // Returns this vector divided by its length: same direction, length 1.
+  // Not valid for the zero vector (its length is 0).
+  Vector normalised() const;
+
  private:
   double _x;
   double _y;
